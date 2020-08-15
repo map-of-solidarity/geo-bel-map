@@ -8,6 +8,7 @@ interface IPreparedMessage {
   text: string;
   _parseText: (message: Message) => string;
   location: MessageLocation | null;
+  link: string | null;
 }
 
 interface IPreparedTextMessage extends IPreparedMessage {}

@@ -5,10 +5,11 @@ import { recognizeType } from './helpers/recognizeType';
 import textParser from './helpers/textParser';
 import { prepareMessage } from './prepareMessage';
 import withLocation from './helpers/with-location';
+import withLink from './helpers/with-link';
 
 loadEnv();
 
-const airgram = new Airgram({
+export const airgram = new Airgram({
   apiId: process.env.APP_ID as number | undefined,
   apiHash: process.env.APP_HASH,
   command: process.env.TDLIB_COMMAND,
@@ -46,7 +47,10 @@ airgram.on('updateNewMessage', async ({ update }) => {
     return false;
   }
 
-  const readyMessage = await withLocation(preparedMessage);
+  const readyMessage = await withLocation(preparedMessage).then((message) =>
+    withLink(message),
+  );
+
   console.log(readyMessage);
 });
 
