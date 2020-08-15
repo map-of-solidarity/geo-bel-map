@@ -21,6 +21,9 @@ export default class PreparedTextMessage implements IPreparedTextMessage {
   /* Location from message */
   location: MessageLocation | null = null;
 
+  /* Message permalink */
+  link: string | null = null;
+
   constructor(readonly message: Message, readonly messageType: MessageType) {
     this.chatId = message.chatId;
     this.messageId = message.id;

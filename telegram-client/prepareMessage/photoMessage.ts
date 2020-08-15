@@ -26,6 +26,9 @@ export default class PreparedPhotoMessage implements IPreparedPhotoMessage {
   /* Location from message */
   location: MessageLocation | null = null;
 
+  /* Message permalink */
+  link: string | null = null;
+
   /* Photo from message */
   photo: Photo = {
     path: '',
