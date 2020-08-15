@@ -4,6 +4,7 @@ import { filterChannel } from './middleware/filterChannel';
 import { recognizeType } from './helpers/recognizeType';
 import textParser from './helpers/textParser';
 import { prepareMessage } from './prepareMessage';
+import withLocation from './helpers/with-location';
 
 loadEnv();
 
@@ -44,6 +45,9 @@ airgram.on('updateNewMessage', async ({ update }) => {
   if (prepareMessage === null) {
     return false;
   }
+
+  const readyMessage = await withLocation(preparedMessage);
+  console.log(readyMessage);
 });
 
 // On message content updated
