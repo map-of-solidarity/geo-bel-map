@@ -1,38 +1,15 @@
-import React, { useEffect, useRef } from 'react';
-import { loadModules } from 'esri-loader';
-import './WebMapView.scss';
+import React, { useEffect } from "react";
+import { loadCss } from "esri-loader";
+import { WebMap } from "@esri/react-arcgis";
+import { webMapId } from "../../config";
+import "./WebMapView.scss";
 
 const WebMapView = () => {
-  const mapRef = useRef();
+  useEffect(() => {
+    loadCss();
+  }, []);
 
-  useEffect(
-    () => {
-      // lazy load the required ArcGIS API for JavaScript modules and CSS
-      loadModules(['esri/Map', 'esri/views/WebMapView'], { css: true })
-        .then(([ArcGISMap, MapView]) => {
-          const map = new ArcGISMap({
-            basemap: 'topo-vector'
-          });
-
-          // load the map view at the ref's DOM node
-          const view = new MapView({
-            container: mapRef.current,
-            map: map,
-            center: [-118, 34],
-            zoom: 8
-          });
-
-          return () => {
-            if (view) {
-              // destroy the map view
-              view.container = null;
-            }
-          };
-        });
-    }
-  );
-
-  return <div className="webmap" ref={mapRef} />;
+  return <WebMap className="webmap" id={webMapId} />;
 };
 
 export default WebMapView;
