@@ -1,6 +1,10 @@
 import { Message, MessagePhoto } from 'airgram';
-import { IPreparedPhotoMessage, MessageType, Photo } from './types';
-import parseLocation from '../helpers/parseLocation';
+import {
+  IPreparedPhotoMessage,
+  MessageType,
+  Photo,
+  MessageLocation,
+} from './types';
 
 // @TODO: async download photo
 export default class PreparedPhotoMessage implements IPreparedPhotoMessage {
@@ -20,7 +24,7 @@ export default class PreparedPhotoMessage implements IPreparedPhotoMessage {
   type: MessageType = 'protest';
 
   /* Location from message */
-  location = '';
+  location: MessageLocation | null = null;
 
   /* Photo from message */
   photo: Photo = {
@@ -35,7 +39,6 @@ export default class PreparedPhotoMessage implements IPreparedPhotoMessage {
 
     this.text = this._parseText(message);
     this.type = messageType;
-    this.location = parseLocation(this.text) || '';
   }
 
   // Get text field from message

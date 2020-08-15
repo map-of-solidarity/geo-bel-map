@@ -7,7 +7,7 @@ interface IPreparedMessage {
   type: MessageType;
   text: string;
   _parseText: (message: Message) => string;
-  location: string;
+  location: MessageLocation | null;
 }
 
 interface IPreparedTextMessage extends IPreparedMessage {}
@@ -16,6 +16,12 @@ interface IPreparedPhotoMessage extends IPreparedMessage {
   photo?: Photo | undefined;
   // _downloadPhoto: (message: MessagePhoto) => Photo;
 }
+
+type MessageLocation = {
+  title: string;
+  long: number;
+  lat: number;
+};
 
 type Photo = {
   path: string;
