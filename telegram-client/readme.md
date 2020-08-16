@@ -33,6 +33,14 @@ TDLIB_COMMAND=
 npm install
 ```
 
+#### Todos
+
+- [x] Parse text messages
+- [x] Recognize type of message by hashtag (protest, forces, barricades, medical, safe)
+- [x] Recognize location by #address
+- [ ] Parse/download images
+- [ ] Push messages to back-end
+
 ### Links
 
 [Airgram Docs](https://airgram.io/guides/installation)
