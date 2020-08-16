@@ -18,7 +18,7 @@ export default class App extends Component<Props> {
     //   <ArcGISMapView
     //     ref={mapView => this.mapView = mapView}
     //     initialMapCenter={[{latitude: 53.900566, longitude: 27.558931}]}
-    //     basemapUrl={''}
+    //     basemapUrl={arcgisURL}
     //     // your props here
     //   />
     // );
