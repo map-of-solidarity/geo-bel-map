@@ -52,8 +52,6 @@ airgram.on('updateNewMessage', async ({ update }) => {
     withLink(message),
   );
 
-  console.log(readyMessage);
-
   await layerPush(readyMessage);
 });
 

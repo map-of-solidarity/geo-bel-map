@@ -27,17 +27,24 @@ interface IReadyMessage {
 
 export const layerPush = async (readyMessage: IReadyMessage) => {
   console.log(`[layerPush] prepared message received for webMap layer push`);
-  console.log(readyMessage);
 
   try {
     const { date, text, location, photo } = readyMessage;
 
     if (location) {
+      const { long, lat } = location;
+
+      const feature = {
+        geometry: { x: long, y: lat },
+        attributes: { status: 'alive' },
+      };
+
       const response = await axios.post(API_URL, {
-        features: mockedFeature,
+        features: [feature],
       });
 
-      console.log(`[layerPush] response: ${response}`);
+      console.log(`[layerPush] response:`);
+      console.log(response);
     }
   } catch (error) {
     console.error(`[layerPush] error: ${error}`);
