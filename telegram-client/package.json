@@ -18,6 +18,7 @@
     "axios": "^0.19.2",
     "cross-fetch": "^3.0.5",
     "dotenv": "^8.2.0",
+    "form-data": "^3.0.0",
     "isomorphic-form-data": "^2.0.0",
     "node-fetch": "^2.6.0",
     "prettier": "^2.0.5",
