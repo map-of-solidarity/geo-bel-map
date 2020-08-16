@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="arcgis_license_key">YOUR_LICENSE_KEY</string>
+</resources>

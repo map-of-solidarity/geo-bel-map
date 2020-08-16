@@ -1,0 +1,20 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'GeoBel' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for GeoBel
+  pod 'ArcGIS-Runtime-SDK-iOS', '100.8'
+
+  target 'GeoBelTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'GeoBelUITests' do
+    # Pods for testing
+  end
+
+end
