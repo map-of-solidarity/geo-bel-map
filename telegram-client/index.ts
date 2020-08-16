@@ -26,7 +26,6 @@ airgram.use(
 
 // Getting new messages
 airgram.on('updateNewMessage', async ({ update }) => {
-  console.log(update.message);
   const message = filterChannel(update.message);
   if (message === null) {
     return false;
