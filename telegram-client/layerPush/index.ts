@@ -3,8 +3,11 @@ import { MessageLocation, MessageType, Photo } from '../prepareMessage/types';
 require('cross-fetch/polyfill');
 require('isomorphic-form-data');
 
-const API_URL =
-  'https://services5.arcgis.com/XV4SHAr4F9IApZBE/arcgis/rest/services/Crowdsourced2/FeatureServer/0/addFeatures';
+if (!process.env.LAYER_URL) {
+  throw Error('LAYER_URL is missing');
+}
+
+const API_URL = process.env.LAYER_URL;
 
 interface IReadyMessage {
   chatId: number;
@@ -18,6 +21,11 @@ interface IReadyMessage {
 }
 
 export const pushToLayer = async (message: IReadyMessage) => {
+  let accuracyLevel = '[0, 0]';
+  if (message.location && message.location.long !== 0) {
+    accuracyLevel = 'City level';
+  }
+
   const requestOptions = {
     url: API_URL,
     features: [
@@ -33,6 +41,8 @@ export const pushToLayer = async (message: IReadyMessage) => {
           EventType: message.type,
           Address: message.location?.title,
           URL: message.link,
+          isConfirmed: false,
+          accuracyLevel: accuracyLevel,
         },
       },
     ],
