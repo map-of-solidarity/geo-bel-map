@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@esri/arcgis-rest-feature-layer": "^2.14.1",
     "@esri/arcgis-rest-geocoding": "^2.14.1",
     "@esri/arcgis-rest-request": "^2.14.1",
     "airgram": "^3.1.1",

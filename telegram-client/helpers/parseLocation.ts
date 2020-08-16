@@ -16,6 +16,7 @@ const parseLocation = async (text: string): Promise<MessageLocation | null> => {
     title: locationTitle,
     long: geocode.long,
     lat: geocode.lat,
+    spatialReference: geocode.spatialReference,
   };
 
   return locationWithCoordinates;
