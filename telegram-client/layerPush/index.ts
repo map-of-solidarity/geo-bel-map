@@ -30,7 +30,6 @@ export const layerPush = async (readyMessage: IReadyMessage) => {
       const formData = new FormData();
       formData.append('features', JSON.stringify(features));
       formData.append('f', 'json');
-      formData.append('key', '');
       const response = await axios.post(API_URL, formData,
         {
           // You need to use `getHeaders()` in Node.js because Axios doesn't
