@@ -14,7 +14,7 @@ export const airgram = new Airgram({
   apiId: process.env.APP_ID as number | undefined,
   apiHash: process.env.APP_HASH,
   command: process.env.TDLIB_COMMAND,
-  logVerbosityLevel: 2,
+  logVerbosityLevel: 0,
 });
 
 airgram.use(
@@ -26,31 +26,39 @@ airgram.use(
 
 // Getting new messages
 airgram.on('updateNewMessage', async ({ update }) => {
+  console.log('[New message]', update.message);
+
   const message = filterChannel(update.message);
   if (message === null) {
+    console.log('[Message skipped. Reason: unnecessary channel]');
     return false;
   }
 
   // Check type of message and parse text
   const messageText = textParser(message);
   if (messageText === null) {
+    console.log('[Message skipped. Reason: not supported message type]');
     return false;
   }
 
   // Check if message has hashtags & get type of message content
   const contentType = recognizeType(messageText);
   if (contentType === null) {
+    console.log('[Message skipped. Reason: hashtag not found]');
     return false;
   }
 
   const preparedMessage = prepareMessage(message, contentType);
   if (prepareMessage === null) {
+    console.log("[Message skipped. Reason: message can't be prepared]");
     return false;
   }
 
   const readyMessage = await withLocation(preparedMessage).then((message) =>
     withLink(message),
   );
+
+  console.log('[Ready message]', readyMessage);
 
   await pushToLayer(readyMessage);
 });
