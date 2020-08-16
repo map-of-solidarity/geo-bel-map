@@ -9,7 +9,7 @@ const parseLocation = async (text: string): Promise<MessageLocation | null> => {
     return null;
   }
 
-  const locationTitle = location[1];
+  const locationTitle = location[2];
   const geocode = await geocodeLocation(locationTitle);
 
   const locationWithCoordinates: MessageLocation = {
