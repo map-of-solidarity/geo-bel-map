@@ -1,4 +1,5 @@
 import { PreparedTextMessage } from './textMessage';
+import { ISpatialReference } from '@esri/arcgis-rest-geocoding';
 
 interface IPreparedMessage {
   chatId: number;
@@ -22,6 +23,7 @@ type MessageLocation = {
   title: string;
   long: number;
   lat: number;
+  spatialReference: ISpatialReference | undefined;
 };
 
 type Photo = {

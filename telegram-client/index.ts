@@ -6,7 +6,7 @@ import textParser from './helpers/textParser';
 import { prepareMessage } from './prepareMessage';
 import withLocation from './helpers/with-location';
 import withLink from './helpers/with-link';
-import { layerPush } from './layerPush';
+import { pushToLayer } from './layerPush';
 
 loadEnv();
 
@@ -52,7 +52,7 @@ airgram.on('updateNewMessage', async ({ update }) => {
     withLink(message),
   );
 
-  await layerPush(readyMessage);
+  await pushToLayer(readyMessage);
 });
 
 // On message content updated
