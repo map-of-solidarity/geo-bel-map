@@ -2,7 +2,7 @@ import { MessageLocation } from '../prepareMessage/types';
 import geocodeLocation from './geocoding';
 
 const parseLocation = async (text: string): Promise<MessageLocation | null> => {
-  const locationRegex = /#address [\'|\"](.*?)[\'|\"]/gm;
+  const locationRegex = /#(address|адрес|адресс|location|локация|лакацыя) [\'|\"](.*?)[\'|\"]/gm;
   const location = locationRegex.exec(text);
 
   if (location === null || location.length === 0) {
