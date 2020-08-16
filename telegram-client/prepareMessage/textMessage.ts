@@ -1,5 +1,5 @@
 import { Message, MessageText } from 'airgram';
-import { IPreparedTextMessage, MessageType } from './types';
+import { IPreparedTextMessage, MessageType, MessageLocation } from './types';
 import parseLocation from '../helpers/parseLocation';
 
 export default class PreparedTextMessage implements IPreparedTextMessage {
@@ -19,7 +19,10 @@ export default class PreparedTextMessage implements IPreparedTextMessage {
   type: MessageType = 'protest';
 
   /* Location from message */
-  location = '';
+  location: MessageLocation | null = null;
+
+  /* Message permalink */
+  link: string | null = null;
 
   constructor(readonly message: Message, readonly messageType: MessageType) {
     this.chatId = message.chatId;
@@ -28,7 +31,6 @@ export default class PreparedTextMessage implements IPreparedTextMessage {
 
     this.text = this._parseText(message);
     this.type = messageType;
-    this.location = parseLocation(this.text) || '';
   }
 
   // Get text field from message
