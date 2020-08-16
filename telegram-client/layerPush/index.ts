@@ -1,7 +1,10 @@
 import { addFeatures } from '@esri/arcgis-rest-feature-layer';
 import { MessageLocation, MessageType, Photo } from '../prepareMessage/types';
+import { config as loadEnv } from 'dotenv';
 require('cross-fetch/polyfill');
 require('isomorphic-form-data');
+
+loadEnv();
 
 if (!process.env.LAYER_URL) {
   throw Error('LAYER_URL is missing');
@@ -21,9 +24,9 @@ interface IReadyMessage {
 }
 
 export const pushToLayer = async (message: IReadyMessage) => {
-  let accuracyLevel = '[0, 0]';
+  let accuracyLevel = 0;
   if (message.location && message.location.long !== 0) {
-    accuracyLevel = 'City level';
+    accuracyLevel = 1;
   }
 
   const requestOptions = {
