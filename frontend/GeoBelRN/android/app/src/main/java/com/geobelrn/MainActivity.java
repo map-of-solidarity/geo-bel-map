@@ -1,4 +1,4 @@
-package com.geobelrn;
+package online.geobel.dev;
 
 import com.facebook.react.ReactActivity;
 
