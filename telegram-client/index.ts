@@ -1,12 +1,13 @@
 import { Airgram, Auth, prompt } from 'airgram';
-import { config as loadEnv } from 'dotenv';
+
 import { filterChannel } from './middleware/filterChannel';
+import { config as loadEnv } from 'dotenv';
+import { prepareMessage } from './prepareMessage';
+import { pushToLayer } from './mapLayer';
 import { recognizeType } from './helpers/recognizeType';
 import textParser from './helpers/textParser';
-import { prepareMessage } from './prepareMessage';
-import withLocation from './helpers/with-location';
 import withLink from './helpers/with-link';
-import { pushToLayer } from './layerPush';
+import withLocation from './helpers/with-location';
 
 loadEnv();
 

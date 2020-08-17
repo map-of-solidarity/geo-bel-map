@@ -1,5 +1,5 @@
-import PreparedTextMessage from '../prepareMessage/textMessage';
 import PreparedPhotoMessage from '../prepareMessage/photoMessage';
+import PreparedTextMessage from '../prepareMessage/textMessage';
 import parseLocation from './parseLocation';
 
 const withLocation = async (

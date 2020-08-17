@@ -1,7 +1,8 @@
+import { EventType, prepareMessageType } from './types';
+
 import { Message } from 'airgram';
-import { prepareMessageType, EventType } from './types';
-import PreparedTextMessage from './textMessage';
 import PreparedPhotoMessage from './photoMessage';
+import PreparedTextMessage from './textMessage';
 
 export const prepareMessage: prepareMessageType = (
   message: Message,

@@ -1,5 +1,5 @@
-import hashtags from '../config/hashtags';
 import { EventType } from '../prepareMessage/types';
+import hashtags from '../config/hashtags';
 
 export const recognizeType = (text: string): EventType | null => {
   const hashTagRegex = /(^|\s)(#[a-zA-Zа-яА-Я\d-]+)/gm;

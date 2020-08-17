@@ -1,4 +1,4 @@
-import { Message, MessageText, MessagePhoto } from 'airgram';
+import { Message, MessagePhoto, MessageText } from 'airgram';
 
 const textParser = (message: Message): string | null => {
   const messageType = message.content._;

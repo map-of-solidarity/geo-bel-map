@@ -1,5 +1,6 @@
+import { EventType, IPreparedTextMessage, MessageLocation } from './types';
 import { Message, MessageText } from 'airgram';
-import { IPreparedTextMessage, EventType, MessageLocation } from './types';
+
 import parseLocation from '../helpers/parseLocation';
 
 export default class PreparedTextMessage implements IPreparedTextMessage {

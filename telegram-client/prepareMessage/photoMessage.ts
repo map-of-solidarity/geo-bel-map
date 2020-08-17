@@ -1,10 +1,10 @@
-import { Message, MessagePhoto } from 'airgram';
 import {
-  IPreparedPhotoMessage,
   EventType,
-  Photo,
+  IPreparedPhotoMessage,
   MessageLocation,
+  Photo,
 } from './types';
+import { Message, MessagePhoto } from 'airgram';
 
 // @TODO: async download photo
 export default class PreparedPhotoMessage implements IPreparedPhotoMessage {

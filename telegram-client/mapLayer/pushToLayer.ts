@@ -1,6 +1,8 @@
+import { EventType, MessageLocation, Photo } from '../prepareMessage/types';
+
 import { addFeatures } from '@esri/arcgis-rest-feature-layer';
-import { MessageLocation, EventType, Photo } from '../prepareMessage/types';
 import { config as loadEnv } from 'dotenv';
+
 require('cross-fetch/polyfill');
 require('isomorphic-form-data');
 
