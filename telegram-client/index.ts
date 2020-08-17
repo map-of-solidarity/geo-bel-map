@@ -49,6 +49,9 @@ airgram.on('updateNewMessage', async ({ update }) => {
     return false;
   }
 
+  // Convert unix timestamp to milliseconds
+  message.date = message.date * 1000;
+
   const preparedMessage = prepareMessage(message, contentType);
   if (prepareMessage === null) {
     console.log("[Message skipped. Reason: message can't be prepared]");
