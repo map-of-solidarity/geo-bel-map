@@ -31,7 +31,7 @@ type Photo = {
   id: string;
 };
 
-type MessageType = 'protest' | 'forces' | 'barricades' | 'medical' | 'safe';
+type EventType = 'protest' | 'forces' | 'barricades' | 'medical' | 'safe';
 
 type prepareMessageType = (
   message: Message,

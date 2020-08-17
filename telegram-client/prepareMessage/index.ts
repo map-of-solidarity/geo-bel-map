@@ -1,19 +1,19 @@
 import { Message } from 'airgram';
-import { prepareMessageType, MessageType } from './types';
+import { prepareMessageType, EventType } from './types';
 import PreparedTextMessage from './textMessage';
 import PreparedPhotoMessage from './photoMessage';
 
 export const prepareMessage: prepareMessageType = (
   message: Message,
-  messageType: MessageType,
+  eventType: EventType,
 ) => {
   const contentType = message.content._;
 
   switch (contentType) {
     case 'messageText':
-      return new PreparedTextMessage(message, messageType);
+      return new PreparedTextMessage(message, eventType);
     case 'messagePhoto':
-      return new PreparedPhotoMessage(message, messageType);
+      return new PreparedPhotoMessage(message, eventType);
     default:
       return null;
   }

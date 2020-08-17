@@ -1,5 +1,5 @@
 import { addFeatures } from '@esri/arcgis-rest-feature-layer';
-import { MessageLocation, MessageType, Photo } from '../prepareMessage/types';
+import { MessageLocation, EventType, Photo } from '../prepareMessage/types';
 import { config as loadEnv } from 'dotenv';
 require('cross-fetch/polyfill');
 require('isomorphic-form-data');
@@ -16,7 +16,7 @@ interface IReadyMessage {
   chatId: number;
   messageId: number;
   date: number;
-  type: MessageType;
+  type: EventType;
   text: string;
   location: MessageLocation | null;
   photo?: Photo;
