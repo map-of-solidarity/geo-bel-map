@@ -54,7 +54,6 @@ export const pushToLayer = async (message: IReadyMessage) => {
     ],
   };
   addFeatures(requestOptions).then((response) => {
-    console.log('[Feature added with next data]', requestOptions);
     console.log('[Feature added with next data]');
     console.log('[Geometry]', requestOptions.features[0].geometry);
     console.log('[Attributes]', requestOptions.features[0].attributes);
