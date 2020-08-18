@@ -1,13 +1,7 @@
-import {
-  EventType,
-  IPreparedPhotoMessage,
-  MessageLocation,
-  Photo,
-} from './types';
-import { Message, MessagePhoto } from 'airgram';
+import { EventType, IPreparedVideoMessage, MessageLocation } from './types';
+import { Message, MessageVideo, Video } from 'airgram';
 
-// @TODO: async download photo
-export default class PreparedPhotoMessage implements IPreparedPhotoMessage {
+export default class PreparedVideoMessage implements IPreparedVideoMessage {
   /* Telegram chat ID */
   chatId = 0;
 
@@ -29,12 +23,6 @@ export default class PreparedPhotoMessage implements IPreparedPhotoMessage {
   /* Message permalink */
   link: string | null = null;
 
-  /* Photo from message */
-  photo: Photo = {
-    path: '',
-    id: '',
-  };
-
   constructor(readonly message: Message, readonly eventType: EventType) {
     this.chatId = message.chatId;
     this.messageId = message.id;
@@ -46,7 +34,7 @@ export default class PreparedPhotoMessage implements IPreparedPhotoMessage {
 
   // Get text field from message
   _parseText(message: Message) {
-    const typedMessage = message.content as MessagePhoto;
+    const typedMessage = message.content as MessageVideo;
     return typedMessage.caption.text;
   }
 
