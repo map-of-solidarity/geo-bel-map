@@ -1,7 +1,6 @@
 import { EventType, IPreparedVideoMessage, MessageLocation } from './types';
 import { Message, MessageVideo, Video } from 'airgram';
 
-// @TODO: async download photo
 export default class PreparedVideoMessage implements IPreparedVideoMessage {
   /* Telegram chat ID */
   chatId = 0;
