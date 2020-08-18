@@ -1,7 +1,7 @@
 import React from "react";
 // import WebMapView from "./components/WebMapView/WebMapView";
 import "./App.scss";
-
+import TELEGRAM_ICON from './assets/telegram-app-48.png';
 function App() {
   return (
     <div className="App" style={{margin: 0, padding: 0, height: '100%', border: 'none'}}>
@@ -27,7 +27,7 @@ function App() {
         scrolling="auto"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       />
-      <a className="button support-button" target="_blank" href="https://t.me/joinchat/CVMoxBKG8TGpZZy74Ren3g">&#9432;&nbsp;&nbsp;Support Channel<br />on Telegram</a>
+      <a className="button support-button" target="_blank" href="https://t.me/joinchat/CVMoxBKG8TGpZZy74Ren3g"><img src={TELEGRAM_ICON} height={30} width={30}/>&nbsp;&nbsp;Техподдержка</a>
     </div>
   );
 }
