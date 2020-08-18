@@ -1,5 +1,8 @@
 import { PreparedTextMessage } from './textMessage';
 import { ISpatialReference } from '@esri/arcgis-rest-geocoding';
+import { Video } from 'airgram';
+import PreparedPhotoMessage from './photoMessage';
+import PreparedVideoMessage from './videoMessage';
 
 interface IPreparedMessage {
   chatId: number;
@@ -19,6 +22,10 @@ interface IPreparedPhotoMessage extends IPreparedMessage {
   // _downloadPhoto: (message: MessagePhoto) => Photo;
 }
 
+interface IPreparedVideoMessage extends IPreparedMessage {
+  video?: Video | undefined;
+}
+
 type MessageLocation = {
   title: string;
   long: number;
@@ -33,7 +40,10 @@ type Photo = {
 
 type EventType = 'protest' | 'forces' | 'barricades' | 'medical' | 'safe';
 
-type prepareMessageType = (
-  message: Message,
-  messageType: MessageType,
-) => PreparedTextMessage | null;
+interface IPrepareMessageType {
+  (message: Message, messageType: MessageType):
+    | PreparedTextMessage
+    | PreparedPhotoMessage
+    | PreparedVideoMessage
+    | null;
+}
