@@ -39,6 +39,12 @@ npm install
 LAYER_URL=
 ```
 
+6. Set APP_ENV to production. For dev - local
+
+```
+APP_ENV=production
+```
+
 ### Links
 
 [Airgram Docs](https://airgram.io/guides/installation)
