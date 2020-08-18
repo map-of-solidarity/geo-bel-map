@@ -1,8 +1,11 @@
 import { Airgram, Auth, prompt } from 'airgram';
 
+import { initSentry } from './services/sentry';
 import { config as loadEnv } from 'dotenv';
 import { onNewMessage } from './middleware/events';
 import { pushToLayer } from './mapLayer';
+
+initSentry();
 
 loadEnv();
 
