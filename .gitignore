@@ -16,6 +16,18 @@ modules.xml
 # End of https://www.toptal.com/developers/gitignore/api/phpstorm+all
 
 
+### VS Code ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
+
 ### Telegram client ###
 
 db/
