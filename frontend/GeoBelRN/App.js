@@ -6,14 +6,21 @@
  * @flow strict-local
  */
 import React, {Component} from 'react';
-import {StyleSheet, View, SafeAreaView} from 'react-native';
-import {WebView, Linking} from 'react-native-webview';
+import {StyleSheet, SafeAreaView, Linking} from 'react-native';
+import {WebView} from 'react-native-webview';
 // import ArcGISMapView from 'react-native-arcgis-mapview';
 
 // const arcgisURL = 'https://geobel.maps.arcgis.com/apps/webappviewer/index.html?id=1a81ea9392954fbfa3eb6cec81f4da55'; // dev
-const arcgisURL = 'https://geobel.maps.arcgis.com/apps/webappviewer/index.html?id=d20dff912ddd4af6a265dad0d0d782fb'; // prod
+const domain = 'https://geobel.online'; // prod
 type Props = {};
 export default class App extends Component<Props> {
+  openURL(url) {
+    try {
+      Linking.openURL(url).catch(e => console.warn(e));
+    } catch (e) {
+      console.warn(e);
+    }
+  }
   render() {
     // return (
     //   <ArcGISMapView
@@ -26,11 +33,19 @@ export default class App extends Component<Props> {
     return (
       <SafeAreaView style={styles.container}>
         <WebView
+          ref={(ref) => (this.webViewRef = ref)}
           style={{flex: 1, alignSelf: 'stretch'}}
-          source={{uri: arcgisURL}}
+          source={{uri: domain}}
           allowUniversalAccessFromFileURLs
           mixedContentMode={'compatibility'}
           useWebKit
+          originWhitelist={['https://']}
+          onNavigationStateChange={(event) => {
+            if (event.url !== domain && event.navigationType === 'click') {
+              this.webViewRef.stopLoading();
+              this.openURL(event.url)
+            }
+          }}
         />
       </SafeAreaView>
     );
@@ -47,9 +62,4 @@ const styles = StyleSheet.create({
   }
 });
 
-// onNavigationStateChange={(event) => {
-//   if (event.url !== arcgisURL && event.navigationType === 'click') {
-//     this.webview.stopLoading();
-//     Linking.openURL(event.url);
-//   }
-// }}
+
