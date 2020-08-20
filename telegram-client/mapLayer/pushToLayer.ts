@@ -1,6 +1,8 @@
+import { EventType, MessageLocation, Photo } from '../prepareMessage/types';
+
 import { addFeatures } from '@esri/arcgis-rest-feature-layer';
-import { MessageLocation, MessageType, Photo } from '../prepareMessage/types';
 import { config as loadEnv } from 'dotenv';
+
 require('cross-fetch/polyfill');
 require('isomorphic-form-data');
 
@@ -16,7 +18,7 @@ interface IReadyMessage {
   chatId: number;
   messageId: number;
   date: number;
-  type: MessageType;
+  type: EventType;
   text: string;
   location: MessageLocation | null;
   photo?: Photo;
@@ -46,12 +48,15 @@ export const pushToLayer = async (message: IReadyMessage) => {
           URL: message.link,
           isConfirmed: false,
           accuracyLevel: accuracyLevel,
+          Timestamp: message.date,
         },
       },
     ],
   };
   addFeatures(requestOptions).then((response) => {
-    console.log('[Feature added with next data]', requestOptions);
+    console.log('[Feature added with next data]');
+    console.log('[Geometry]', requestOptions.features[0].geometry);
+    console.log('[Attributes]', requestOptions.features[0].attributes);
     console.log('[addFeature response]', response);
   });
 };

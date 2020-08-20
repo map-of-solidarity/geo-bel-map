@@ -1,5 +1,6 @@
 import { geocode } from '@esri/arcgis-rest-geocoding';
-import { setDefaultRequestOptions, request } from '@esri/arcgis-rest-request';
+import { setDefaultRequestOptions } from '@esri/arcgis-rest-request';
+
 require('cross-fetch/polyfill');
 require('isomorphic-form-data');
 
