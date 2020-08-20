@@ -5,8 +5,8 @@
   "main": "build/index.js",
   "scripts": {
     "start": "npm run build & node build/index.js",
-    "build": "tsc",
-    "watch": "tsc -w"
+    "build": "tsc -p tsconfig.production.json",
+    "watch": "concurrently --kill-others --names \"BUILD,RUN\" -c \"bgYellow.bold,bgGreen.bold\" \"tsc -w\" \"nodemon -q -w build build/index.js\""
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
     "@esri/arcgis-rest-feature-layer": "^2.14.1",
     "@esri/arcgis-rest-geocoding": "^2.14.1",
     "@esri/arcgis-rest-request": "^2.14.1",
+    "@sentry/node": "^5.20.1",
     "airgram": "^3.1.1",
     "axios": "^0.19.2",
     "cross-fetch": "^3.0.5",
@@ -27,6 +28,8 @@
   },
   "devDependencies": {
     "@types/node": "^14.0.27",
-    "@types/node-fetch": "^2.5.7"
+    "@types/node-fetch": "^2.5.7",
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.4"
   }
 }

@@ -1,0 +1,1 @@
+export { onNewMessage } from './newMessage'
