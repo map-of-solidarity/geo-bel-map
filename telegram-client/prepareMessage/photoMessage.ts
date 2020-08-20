@@ -1,10 +1,10 @@
-import { Message, MessagePhoto } from 'airgram';
 import {
+  EventType,
   IPreparedPhotoMessage,
-  MessageType,
-  Photo,
   MessageLocation,
+  Photo,
 } from './types';
+import { Message, MessagePhoto } from 'airgram';
 
 // @TODO: async download photo
 export default class PreparedPhotoMessage implements IPreparedPhotoMessage {
@@ -20,8 +20,8 @@ export default class PreparedPhotoMessage implements IPreparedPhotoMessage {
   /* Message timestamp */
   date = 0;
 
-  /* Type of message content */
-  type: MessageType = 'protest';
+  /* Event type */
+  type: EventType = 'protest';
 
   /* Location from message */
   location: MessageLocation | null = null;
@@ -35,13 +35,13 @@ export default class PreparedPhotoMessage implements IPreparedPhotoMessage {
     id: '',
   };
 
-  constructor(readonly message: Message, readonly messageType: MessageType) {
+  constructor(readonly message: Message, readonly eventType: EventType) {
     this.chatId = message.chatId;
     this.messageId = message.id;
     this.date = message.date;
 
     this.text = this._parseText(message);
-    this.type = messageType;
+    this.type = eventType;
   }
 
   // Get text field from message
