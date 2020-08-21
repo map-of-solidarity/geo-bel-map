@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import AddToHomeScreen from '@ideasio/add-to-homescreen-react';
 import AddToHomescreen from 'react-add-to-homescreen';
 
 // import WebMapView from "./components/WebMapView/WebMapView";
@@ -10,7 +9,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      telegramFolded: true,
+      telegramFolded: true,s
       telegramClicked: false
     }
   }
@@ -66,13 +65,8 @@ export default class App extends Component {
           <img src={TELEGRAM_ICON} height={30} width={30}/>
           &nbsp;&nbsp;Техподдержка
         </a>
-        <AddToHomeScreen appId='Add-to-Homescreen React Basic Integration Example' />
         <AddToHomescreen onAddToHomescreenClick={this.handleAddToHomescreenClick} />
       </div>
     );
   }
 }
-
-
-
-
