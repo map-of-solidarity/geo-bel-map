@@ -9,7 +9,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      telegramFolded: true,s
+      telegramFolded: true,
       telegramClicked: false
     }
   }
