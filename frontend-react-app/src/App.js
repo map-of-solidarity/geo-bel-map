@@ -40,13 +40,14 @@ export default class App extends Component {
           }}
           id="arcgis_iframe"
           src="https://geobel.maps.arcgis.com/apps/webappviewer/index.html?id=d20dff912ddd4af6a265dad0d0d782fb"
-          frameborder="0"
-          marginheight="0"
-          marginwidth="0"
+          frameBorder="0"
+          marginHeight="0"
+          marginWidth="0"
           width="100%"
           height="100%"
           scrolling="auto"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          title={'GeoBel'}
         />
         <a
           onClick={(e) => this.tapOnTelegramButton(e)}

@@ -43,7 +43,7 @@ export default class App extends Component<Props> {
           onNavigationStateChange={(event) => {
             if (event.url !== domain && event.navigationType === 'click') {
               this.webViewRef.stopLoading();
-              this.openURL(event.url)
+              this.openURL(event.url);
             }
           }}
         />
