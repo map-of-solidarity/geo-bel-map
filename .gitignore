@@ -143,6 +143,9 @@ fastlane/readme.md
 # Version control
 vcs.xml
 
+# iOS
+Pods/
+
 # lint
 lint/intermediates/
 lint/generated/
