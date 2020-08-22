@@ -1,5 +1,6 @@
+import { EventType, IPreparedTextMessage, MessageLocation } from './types';
 import { Message, MessageText } from 'airgram';
-import { IPreparedTextMessage, MessageType, MessageLocation } from './types';
+
 import parseLocation from '../helpers/parseLocation';
 
 export default class PreparedTextMessage implements IPreparedTextMessage {
@@ -15,8 +16,8 @@ export default class PreparedTextMessage implements IPreparedTextMessage {
   /* Message timestamp */
   date = 0;
 
-  /* Type of message content */
-  type: MessageType = 'protest';
+  /* Event type */
+  type: EventType = 'protest';
 
   /* Location from message */
   location: MessageLocation | null = null;
@@ -24,13 +25,13 @@ export default class PreparedTextMessage implements IPreparedTextMessage {
   /* Message permalink */
   link: string | null = null;
 
-  constructor(readonly message: Message, readonly messageType: MessageType) {
+  constructor(readonly message: Message, readonly eventType: EventType) {
     this.chatId = message.chatId;
     this.messageId = message.id;
     this.date = message.date;
 
     this.text = this._parseText(message);
-    this.type = messageType;
+    this.type = eventType;
   }
 
   // Get text field from message

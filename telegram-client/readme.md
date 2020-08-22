@@ -12,7 +12,7 @@
 
 Setup env
 
-1. Need to create new app on [Telegram website](https://my.telegram.org/apps)
+1. Create new app on [Telegram website](https://my.telegram.org/apps)
 
 ```
 APP_ID=
@@ -33,14 +33,19 @@ TDLIB_COMMAND=
 npm install
 ```
 
-#### Todos
+5. Set layer url of arcgis map
 
-- [x] Parse text messages
-- [x] Recognize type of message by hashtag (protest, forces, barricades, medical, safe)
-- [x] Recognize location by #address
-- [ ] Parse/download images
-- [ ] Push messages to back-end
+```
+LAYER_URL=
+```
+
+6. Set APP_ENV to production. For dev - local
+
+```
+APP_ENV=production
+```
 
 ### Links
 
 [Airgram Docs](https://airgram.io/guides/installation)
+[ArcGIS REST JS Docs](https://esri.github.io/arcgis-rest-js/api/)
