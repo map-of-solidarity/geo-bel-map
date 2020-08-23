@@ -36,9 +36,7 @@ export default class App extends Component {
   }
 
   handleAddToHomescreenClick = () => {
-    alert(`
-      1. Open Share menu
-      2. Tap on "Add to Home Screen" button`);
+    alert(`Нажмите «Поделится» а потом «На экран "Домой"»`);
   };
 
   render() {
@@ -107,6 +105,7 @@ export default class App extends Component {
         ) : null}
         <AddToHomescreen
           onAddToHomescreenClick={this.handleAddToHomescreenClick}
+          title={'Добавить на экран «Домой»'}
         />
       </div>
     );
