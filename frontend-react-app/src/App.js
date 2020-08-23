@@ -105,7 +105,7 @@ export default class App extends Component {
         ) : null}
         <AddToHomescreen
           onAddToHomescreenClick={this.handleAddToHomescreenClick}
-          title={'Добавить на экран «Домой»'}
+          title={'Добавить «ГеоБел» на главный экран'}
         />
       </div>
     );
