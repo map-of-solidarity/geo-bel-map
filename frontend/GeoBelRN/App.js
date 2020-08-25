@@ -6,10 +6,11 @@
  * @flow strict-local
  */
 import React, {Component} from 'react';
-import {StyleSheet, SafeAreaView, Linking} from 'react-native';
+import {StyleSheet, SafeAreaView, Linking, Alert} from 'react-native';
 import {WebView} from 'react-native-webview';
 // import ArcGISMapView from 'react-native-arcgis-mapview';
-
+import messaging from '@react-native-firebase/messaging';
+import _ from 'lodash';
 import * as Sentry from '@sentry/react-native';
 
 Sentry.init({
@@ -21,6 +22,37 @@ Sentry.init({
 const domain = 'https://geobel.online'; // prod
 type Props = {};
 export default class App extends Component<Props> {
+
+  componentDidMount() {
+    this.requestUserPermission().catch(e => console.warn('err requesting notification permission', e))
+  }
+
+  async requestUserPermission() {
+    const authStatus = await messaging().requestPermission();
+    const enabled =
+      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+    if (enabled) {
+      const token = await messaging().getToken()
+      if (token) {
+        console.log('push token ', token);
+        messaging().onMessage((msg) => {
+          // { messageId: '1598359895614975',
+          //   data: {},
+          //   sentTime: '1598359895',
+          //     mutableContent: true,
+          //   notification: { ios: {}, title: 'dsf', sound: 'default', body: 'dfds' } }
+          //
+          console.log('push msg', msg);
+
+          Alert.alert(_.get(msg, 'notification.title'), _.get(msg, 'notification.body'));
+        })
+      }
+      console.log('Authorization status:', authStatus);
+    }
+  }
+
   openURL(url) {
     try {
       Linking.openURL(url).catch(e => console.warn(e));

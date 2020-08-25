@@ -358,3 +358,6 @@ Pods/
 # firebase credentials
 google-services.json
 GoogleService-info.plist
+
+# Sentry
+sentry.properties
