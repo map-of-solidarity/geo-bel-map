@@ -354,3 +354,7 @@ Temporary Items
 
 # iOS
 Pods/
+
+# firebase credentials
+google-services.json
+GoogleService-info.plist

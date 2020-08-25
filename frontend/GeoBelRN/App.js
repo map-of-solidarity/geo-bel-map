@@ -10,6 +10,13 @@ import {StyleSheet, SafeAreaView, Linking} from 'react-native';
 import {WebView} from 'react-native-webview';
 // import ArcGISMapView from 'react-native-arcgis-mapview';
 
+import * as Sentry from '@sentry/react-native';
+
+Sentry.init({
+  dsn: 'https://381b55a8bc4d4c499edb140a16a8ab0b@o382492.ingest.sentry.io/5403567',
+});
+
+
 // const arcgisURL = 'https://geobel.maps.arcgis.com/apps/webappviewer/index.html?id=1a81ea9392954fbfa3eb6cec81f4da55'; // dev
 const domain = 'https://geobel.online'; // prod
 type Props = {};
@@ -21,6 +28,7 @@ export default class App extends Component<Props> {
       console.warn(e);
     }
   }
+
   render() {
     // return (
     //   <ArcGISMapView
