@@ -14,7 +14,7 @@ import _ from 'lodash';
 import * as Sentry from '@sentry/react-native';
 
 Sentry.init({
-  dsn: 'https://381b55a8bc4d4c499edb140a16a8ab0b@o382492.ingest.sentry.io/5403567',
+  dsn: "https://dca7f48213f54bad920551dad66fdad7@o382492.ingest.sentry.io/5404561",
 });
 
 
@@ -24,7 +24,19 @@ type Props = {};
 export default class App extends Component<Props> {
 
   componentDidMount() {
-    this.requestUserPermission().catch(e => console.warn('err requesting notification permission', e))
+    this.requestUserPermission().catch(e => console.warn('err requesting notification permission', e));
+    this.getInitialNotification().catch(e => console.warn('getInitialNotification', e));
+    // throw new Error("My first Sentry error!");
+  }
+
+  async getInitialNotification() {
+    const msg = await messaging().getInitialNotification();
+
+      // when tapped on notification from a terminated\quit state
+    if (msg) {
+      Alert.alert(_.get(msg, 'notification.title'), _.get(msg, 'notification.body'));
+    }
+
   }
 
   async requestUserPermission() {
@@ -38,14 +50,11 @@ export default class App extends Component<Props> {
       if (token) {
         console.log('push token ', token);
         messaging().onMessage((msg) => {
-          // { messageId: '1598359895614975',
-          //   data: {},
-          //   sentTime: '1598359895',
-          //     mutableContent: true,
-          //   notification: { ios: {}, title: 'dsf', sound: 'default', body: 'dfds' } }
-          //
-          console.log('push msg', msg);
-
+          // when the app is open
+          Alert.alert(_.get(msg, 'notification.title'), _.get(msg, 'notification.body'));
+        })
+        messaging().onNotificationOpenedApp((msg) => {
+          // when tapping on notification and it's in the background
           Alert.alert(_.get(msg, 'notification.title'), _.get(msg, 'notification.body'));
         })
       }
