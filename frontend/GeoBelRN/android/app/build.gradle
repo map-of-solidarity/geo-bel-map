@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: 'com.google.gms.google-services' // <- Add this line
 
 import com.android.build.OutputFile
 
@@ -82,6 +83,7 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/@sentry/react-native/sentry.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -132,8 +134,8 @@ android {
         applicationId "online.geobel.dev"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
-        versionName "1.0"
+        versionCode 3
+        versionName "1.0.4"
         multiDexEnabled true
     }
     splits {
