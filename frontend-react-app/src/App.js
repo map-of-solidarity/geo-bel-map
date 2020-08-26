@@ -14,6 +14,10 @@ export default class App extends Component {
     };
   }
 
+  componentDidMount() {
+    firebase.messaging.getToken({ vapidKey: ""});
+  }
+
   tapOnTelegramButton(e) {
     e.stopPropagation();
     firebase.analytics.logEvent('tap_telegram_button');

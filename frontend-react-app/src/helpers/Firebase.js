@@ -1,5 +1,6 @@
 import * as firebase from 'firebase/app';
 import 'firebase/analytics';
+import 'firebase/messaging';
 const firebaseDevConfig = {
   apiKey: "AIzaSyDAq7f8_hKXQ5kK4rUdDWTsUhl_sLDnzOA",
   authDomain: "geobel-5a886.firebaseapp.com",
@@ -30,6 +31,7 @@ class Firebase {
   constructor() {
     firebase.initializeApp(firebaseConfig);
     this.analytics = firebase.analytics();
+    this.messaging = firebase.messaging();
   }
 }
 
