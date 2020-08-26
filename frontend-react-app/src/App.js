@@ -15,7 +15,13 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    firebase.messaging.getToken({ vapidKey: ""});
+    this.getPushToken()
+  }
+
+  async getPushToken() {
+    const token = await firebase.messaging.getToken({ vapidKey: process.env.REACT_APP_FIREBASE_WEB_NOTIFICATIONS_KEY});
+    console.log('token', token)
+
   }
 
   tapOnTelegramButton(e) {
