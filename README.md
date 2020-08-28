@@ -69,6 +69,18 @@ git push -u origin <branch_name>
 
 Later a team member may deploy that new version to [geobel.online](https://geobel.online)
 
+## Deployment
+
+To be able to deploy, you need to be logged in with firebase and have permissions to deploy in the firebase project.
+
+The following steps will ensure a proper deployment:
+
+```shell
+npm i
+npm run build
+npm run deploy
+```
+
 ## Awards
 
 The project is a winner of the [Build for Belarus](https://eventornado.com/event/build-for-belarus) hackathon
