@@ -2,8 +2,6 @@
 
 [https://geobel.online](https://geobel.online)
 
-Map of Solidarity
-
 ## General information
 
 GeoBel shows real-time locations of protests, medical points, OMON forces and more, on a map of Minsk in Belarus.
