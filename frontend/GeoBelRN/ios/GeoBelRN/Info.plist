@@ -47,7 +47,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>For uploading photos you choose to add to events</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>For </string>
+	<string>For showing your location on the map</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>For uploading photos you choose to add to events</string>
 	<key>UIBackgroundModes</key>
