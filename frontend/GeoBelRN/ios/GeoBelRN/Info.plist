@@ -22,6 +22,8 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -45,11 +47,11 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>For uploading photos you choose to add to events</string>
+	<string>Для загрузки фотографий, которые вы хотите прикрепить к карте</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>For showing your location on the map</string>
+	<string>Для отображения вашего местоположения на карте</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>For uploading photos you choose to add to events</string>
+	<string>Для загрузки фотографий, которые вы хотите прикрепить к карте</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
