@@ -69,6 +69,7 @@ __generated__
 *.aar
 *.ap_
 *.aab
+*.hprof
 
 # Files for the ART/Dalvik VM
 *.dex
