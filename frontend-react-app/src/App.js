@@ -21,13 +21,16 @@ export default class App extends Component {
   }
 
   async getPushToken() {
-    const token = await firebase.messaging.getToken({ vapidKey: process.env.REACT_APP_FIREBASE_WEB_NOTIFICATIONS_KEY});
-    console.log('token', token)
+    if (firebase.messaging) {
+      // to deal with firefox disabled notifications
+      const token = await firebase.messaging.getToken({vapidKey: process.env.REACT_APP_FIREBASE_WEB_NOTIFICATIONS_KEY});
+      console.log('token', token)
+    }
   }
 
   tapOnTelegramButton(e) {
     e.stopPropagation();
-    firebase.analytics.logEvent('tap_telegram_button');
+    if (firebase.analytics) firebase.analytics.logEvent('tap_telegram_button');
     if (!this.state.telegramFolded) {
       this.setState({ telegramFolded: true });
       this.launchTelegram();
@@ -42,7 +45,7 @@ export default class App extends Component {
   }
 
   launchTelegram() {
-    firebase.analytics.logEvent('launched_telegram_support');
+    if (firebase.analytics) firebase.analytics.logEvent('launched_telegram_support');
     window.open(TELEGRAM_SUPPORT_GROUP);
   }
 
