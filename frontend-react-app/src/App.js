@@ -3,8 +3,10 @@ import AddToHomescreen from "react-add-to-homescreen";
 import firebase from './helpers/Firebase';
 // import WebMapView from "./components/WebMapView/WebMapView";
 import "./App.scss";
+import * as serviceWorker from './serviceWorker';
+
 import TELEGRAM_ICON from "./assets/telegram-app-48.png";
-const TELEGRAM_SUPPORT_GROUP = "https://t.me/joinchat/CVMoxBKG8TGpZZy74Ren3g";
+const TELEGRAM_SUPPORT_GROUP = process.env.REACT_APP_TELEGRAM_SUPPORT_URL;
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -14,9 +16,21 @@ export default class App extends Component {
     };
   }
 
+  componentDidMount() {
+    this.getPushToken().catch(e => console.warn('err in getPushToken', e))
+  }
+
+  async getPushToken() {
+    if (firebase.messaging) {
+      // to deal with firefox disabled notifications
+      const token = await firebase.messaging.getToken({vapidKey: process.env.REACT_APP_FIREBASE_WEB_NOTIFICATIONS_KEY});
+      console.log('token', token)
+    }
+  }
+
   tapOnTelegramButton(e) {
     e.stopPropagation();
-    firebase.analytics.logEvent('tap_telegram_button');
+    if (firebase.analytics) firebase.analytics.logEvent('tap_telegram_button');
     if (!this.state.telegramFolded) {
       this.setState({ telegramFolded: true });
       this.launchTelegram();
@@ -31,7 +45,7 @@ export default class App extends Component {
   }
 
   launchTelegram() {
-    firebase.analytics.logEvent('launched_telegram_support');
+    if (firebase.analytics) firebase.analytics.logEvent('launched_telegram_support');
     window.open(TELEGRAM_SUPPORT_GROUP);
   }
 
@@ -65,7 +79,7 @@ export default class App extends Component {
             overflowX: "hidden",
           }}
           id="arcgis_iframe"
-          src="https://geobel.maps.arcgis.com/apps/webappviewer/index.html?id=d20dff912ddd4af6a265dad0d0d782fb"
+          src={process.env.REACT_APP_ARC_GIS_URL}
           frameBorder="0"
           marginHeight="0"
           marginWidth="0"
