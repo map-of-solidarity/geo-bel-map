@@ -31,7 +31,7 @@ Sentry.init({
 });
 
 const arcgisURL =
-  'https://geobel.maps.arcgis.com/apps/webappviewer/index.html?id=d20dff912ddd4af6a265dad0d0d782fb'; // prod
+  'https://geobel.maps.arcgis.com/apps/webappviewer/index.html?id=d20dff912ddd4af6a265dad0d0d782fb&locale=ru'; // prod
 // const domain = 'https://geobel.online'; // prod
 type Props = {};
 export default class App extends Component<Props> {
@@ -139,8 +139,7 @@ export default class App extends Component<Props> {
           useWebKit
           originWhitelist={['https://', 'tg://']}
           onNavigationStateChange={(event) => {
-            debugger;
-            if (event.url !== arcgisURL && event.navigationType === 'click') {
+            if (!event.url.includes(arcgisURL)) {
               this.webViewRef.stopLoading();
               this.openURL(event.url);
             }
